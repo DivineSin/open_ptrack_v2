@@ -6,7 +6,7 @@ min_confidence_initialization: 4.0
 # Tracking maximum frame rate per sensor:
 rate: 30
 # Tracking reference frame:
-world_frame_id: "/world"
+world_frame_id: "camera_link"
 # Voxel size used for people detection:
 voxel_size: 0.06
 # Flag stating if extrinsic (multicamera) calibration has been performed or not:
