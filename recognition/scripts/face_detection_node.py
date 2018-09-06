@@ -54,15 +54,15 @@ class FaceDetectionNode:
 
 		try:
 			print 'tryingnsecs_round to listen raw rgb image topic...'
-			rospy.client.wait_for_message(self.sensor_name + '/rgb/image', Image, 1.0)
-			img_subscriber = message_filters.Subscriber(self.sensor_name + '/rgb/image', Image)
+			rospy.client.wait_for_message(self.sensor_name + '/color/image_raw', Image, 1.0)
+			img_subscriber = message_filters.Subscriber(self.sensor_name + '/color/image_raw', Image)
 		except rospy.ROSException:
-			print 'failed, listen compressed rgb image topic'
-			img_subscriber = message_filters.Subscriber(self.sensor_name + '/rgb/image/compressed', CompressedImage)
+			print 'failed, listen infra1 rgb image topic'
+			img_subscriber = message_filters.Subscriber(self.sensor_name + '/infra1/image_rect_raw', CompressedImage)
 
 		self.subscribers = [
 			img_subscriber,
-			message_filters.Subscriber(self.sensor_name + '/rgb/camera_info', CameraInfo),
+			message_filters.Subscriber(self.sensor_name + '/color/camera_info', CameraInfo),
 			message_filters.Subscriber('/detector/detections', DetectionArray)
 		]
 
